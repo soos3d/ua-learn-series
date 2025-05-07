@@ -1,14 +1,28 @@
 "use client";
 
-import { useState } from "react";
+/* 
+Initialize Universal Account
+*/
+
+import { useState, useEffect } from "react";
 import { ethers } from "ethers";
+
+// Universal Accounts imports
+import { UniversalAccount } from "@GDdark/universal-account";
 
 export default function Home() {
   const [account, setAccount] = useState<string>("");
   const [isConnected, setIsConnected] = useState<boolean>(false);
   const [error, setError] = useState<string>("");
 
-  // Function to connect to a browser wallet
+  // State for Universal Account
+  const [universalAccount, setUniversalAccount] =
+    useState<UniversalAccount | null>(null);
+
+  /**
+   * Step 1: Connect Wallet
+   * Handles the connection to a browser wallet and requests account access
+   */
   const connectWallet = async () => {
     try {
       // Check if window.ethereum exists (MetaMask or other browser wallet)
@@ -32,6 +46,31 @@ export default function Home() {
       setError("Failed to connect. Please try again.");
     }
   };
+
+  /**
+   * Step 2: Initialize Universal Account
+   * Creates a new Universal Account instance when a wallet is connected
+   */
+  useEffect(() => {
+    if (isConnected) {
+      if (!process.env.NEXT_PUBLIC_UA_PROJECT_ID) {
+        setError("No project ID detected. Please add one.");
+        return;
+      }
+
+      const ua = new UniversalAccount({
+        projectId: process.env.NEXT_PUBLIC_UA_PROJECT_ID,
+        ownerAddress: account,
+        tradeConfig: {
+          universalGas: true,
+          // slippageBps: 100 // 1%
+        },
+      });
+
+      console.log(ua);
+      setUniversalAccount(ua);
+    }
+  }, [isConnected, account]);
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen p-8">

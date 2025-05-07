@@ -18,7 +18,9 @@
       }
     ],
     "paths": {
-      "@/*": ["./*", "./src/*", "./src/types/*"]
+      "@/*": ["./*", "./src/*", "./src/types/*"],
+      "@GDdark/universal-account": ["./node_modules/@GDdark/universal-account/dist/index.d.ts"]
+
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/types/**/*.d.ts"],
