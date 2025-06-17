@@ -19,7 +19,7 @@
     ],
     "paths": {
       "@/*": ["./*", "./src/*", "./src/types/*"],
-      "@GDdark/universal-account": ["./node_modules/@GDdark/universal-account/dist/index.d.ts"]
+      "@particle-network/universal-account-sdk": ["./node_modules/@particle-network/universal-account-sdk/dist/index.d.ts"]
 
     }
   },
