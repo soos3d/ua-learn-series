@@ -7,7 +7,10 @@ Starter app including a basic wallet connection example
 import { useState, useEffect, useCallback } from "react";
 import { ethers } from "ethers";
 
-import { UniversalAccount, IAssetsResponse } from "@GDdark/universal-account";
+import {
+  UniversalAccount,
+  IAssetsResponse,
+} from "@particle-network/universal-account-sdk";
 
 export default function Home() {
   const [account, setAccount] = useState<string>("");

@@ -8,7 +8,7 @@ import { useState, useEffect } from "react";
 import { ethers } from "ethers";
 
 // Universal Accounts imports
-import { UniversalAccount } from "@GDdark/universal-account";
+import { UniversalAccount } from "@particle-network/universal-account-sdk";
 
 export default function Home() {
   const [account, setAccount] = useState<string>("");

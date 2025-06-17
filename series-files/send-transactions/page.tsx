@@ -13,7 +13,7 @@ import {
   IAssetsResponse,
   SUPPORTED_TOKEN_TYPE,
   CHAIN_ID,
-} from "@GDdark/universal-account";
+} from "@particle-network/universal-account-sdk";
 
 export default function Home() {
   const [account, setAccount] = useState<string>("");
